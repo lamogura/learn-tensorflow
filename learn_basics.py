@@ -1,3 +1,5 @@
+# https://www.tensorflow.org/versions/r0.8/get_started/index.html
+
 import tensorflow as tf
 import numpy as np
 
@@ -14,10 +16,10 @@ train = optimizer.minimize(loss)
 
 init = tf.initialize_all_variables()
 
-sess = tf.Session()
-sess.run(init)
+with tf.Session() as sess:
+    sess.run(init)
 
-for step in range(201):
-    sess.run(train)
-    if step % 20 == 0:
-        print(step, sess.run(W), sess.run(b))
+    for step in range(201):
+        sess.run(train)
+        if step % 20 == 0:
+            print(step, sess.run(W), sess.run(b))
